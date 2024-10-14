@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+<title>GALLERY!!</title>
+
+{% endblock %}
+
+
+{% block content %}
+
+   <h1 class="'text-2xl text-center font-bold mb-6">Welcome to the gallery</h1>
+   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+       {% for photo in photos %}
+       <div class="bg-white rounded-lg shadow-md overflow-hidden">
+         <h2 class="text-xl font-bold">{{photo.title}}</h2>
+         <img src="{{photo.image.url}}" alt="{{photo.title}}" width="300px">
+         <div class="p-4">
+           <h2 class="text-xl font-bold mb-2">{{ photo.title }}</h2>
+           <p>Category: {{ photo.tag_category }}</p>
+           <p>Posted: {{ photo.created|date:"F j, Y, g:i a" }}</p>
+           <p>Likes: {{ photo.likes.count }} {{ photo.likes.count|pluralize:"like,likes" }}</p>
+       </div>
+   </div>
+   {% endfor %}
+  </div>
+  {% endblock %}
+   
+
+   
+

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+<title>{{photo.title}}</title>
+{% endblock %}
+
+{% block content%}
+
+<h1>{{ photo.title }}</h1>
+
+<div>
+    <div>
+        <div>
+
+            <div>
+                <img src="{{photo.image.url}}" alt="{{photo.title}}" class="w-50 h-50">
+
+            </div>
+
+            <div>
+                <h2>{{photo.title}}</h2>
+                <p>Category;{{photo.tag_category}}</p>
+                <p>Posted:{{photo.created|date:"F j, g:i a"}}</p>
+                <p>Likes:{{ photo.likes.count }} {{photo.likes.count|pluralize:"like,likes"}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
