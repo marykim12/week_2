@@ -10,6 +10,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import logout
 
+
 # Create your views here.
 @login_required(login_url='login_user')
 def index(request):
@@ -17,7 +18,7 @@ def index(request):
     ctx = {'photos': photos}
     return render(request, 'index.html', ctx)
 
-@login_required(login_url='login_user')
+
 def login_user(request):
     form = LoginForm()
     if request.method == 'POST':
@@ -47,9 +48,9 @@ def register(request):
     
         return render(request,'signup.html', {'form':form})
 
-#@login_required(login_url='login_user')
+@login_required(login_url='login_user')
 def add_photo(request):
-     print("View function accessed")
+     #print("View function accessed")
      if request.method == 'POST':
           form = AddPhotoForm(request.POST, request.FILES)
           if form.is_valid():
@@ -66,16 +67,13 @@ def add_photo(request):
      return render(request ,'add_photo.html', {'form':form})
 
 
-#class AddPhotoView(CreateView):
- #   model = Photo
-  #  form = addform
-   # template_name = 'add_photo.html'
 @login_required(login_url='login_user')
 def photo_details(request, photo_id):
         photo = get_object_or_404(Photo, id=photo_id)
         print(photo.image.url)
         return render(request, 'photo_details.html', {'photo': photo})
-     
+
+@login_required(login_url='login_user')    
 def logout_user(request):
     logout(request)
     messages.success(request, ('You are now logged out..'))

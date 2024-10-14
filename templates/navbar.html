@@ -23,7 +23,7 @@
                     {% if user.is_authenticated %}
                     <li><a class="text-white hover:bg-gray-700 px-3 py-2 rounded" href="{% url 'logout_user' %}">Logout</a></li>
                     {% else %}
-                    <li><a class="text-white hover:bg-gray-700 px-3 py-2 rounded" href="{% url 'register' %}">Register</a></li>
+                    <li><a class="text-white hover:bg-gray-700 px-3 py-2 rounded" href="{% url 'signup' %}">Register</a></li>
                     <li><a class="text-white hover:bg-gray-700 px-3 py-2 rounded" href="{% url 'login_user' %}">Login</a></li>
                     {% endif %}
                 </ul>
